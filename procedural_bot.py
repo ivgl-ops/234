@@ -15,9 +15,7 @@ from Sourse import randomrecipe
 #login, password='login','password'
 # vk_session = vk_api.VkApi(login, password)
 # vk_session.auth()
-
 token ='b825ac119d519d3ef793244c05ea4866a5290832e3ea72448b73004e0fc587486848649a1db8dfbe3213a'
-
 vk_session = vk_api.VkApi(token=token)
 
 session_api = vk_session.get_api()
@@ -29,6 +27,7 @@ print("Бот запущен")
 
 def create_keyboard(response):
     keyboard = VkKeyboard(one_time=False)
+
     if response == 'функции':
         keyboard.add_button('Категории', color=VkKeyboardColor.PRIMARY)
         keyboard.add_button('Рандомный рецепт', color=VkKeyboardColor.PRIMARY)
@@ -41,7 +40,6 @@ def create_keyboard(response):
 
     elif response == 'начать':
         keyboard.add_button('Функции', color=VkKeyboardColor.DEFAULT)
-
 
     elif response == 'поиск по каллориям':
         keyboard.add_button('500+ ккал', color=VkKeyboardColor.PRIMARY)
@@ -71,7 +69,7 @@ def create_keyboard(response):
         keyboard.add_button('500+ ккал', color=VkKeyboardColor.PRIMARY)
         keyboard.add_button('поиск по каллориям', color=VkKeyboardColor.DEFAULT)
 
-    elif response == '200 - 300 ккал':
+    elif response == '200 - 400 ккал':
         keyboard.add_button('Пицца', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Пончики', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
@@ -82,23 +80,23 @@ def create_keyboard(response):
         keyboard.add_button('Капкейки', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
         keyboard.add_button('поиск по каллориям', color=VkKeyboardColor.DEFAULT)
-        keyboard.add_button('далее 200 - 300 ккал', color=VkKeyboardColor.PRIMARY)
+        keyboard.add_button('далее 200 - 400 ккал', color=VkKeyboardColor.PRIMARY)
 
-    elif response == 'далее 200 - 300 ккал':
+    elif response == 'далее 200 - 400 ккал':
         keyboard.add_button('Паста карбонара', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Джамбалайя', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
         keyboard.add_button('Плов', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Картофель тушёный', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
-        keyboard.add_button('200 - 300 ккал', color=VkKeyboardColor.PRIMARY)
+        keyboard.add_button('200 - 400 ккал', color=VkKeyboardColor.PRIMARY)
         keyboard.add_button('поиск по каллориям', color=VkKeyboardColor.DEFAULT)
 
     elif response == '100 - 200 ккал':
-        keyboard.add_button('Салат с креветками и кунжутом', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_button('Салат с креветками', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Английский салат', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
-        keyboard.add_button('Салат с курицей в азиатском стиле', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_button('Азиатский салат с курицей', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Салат с сыром и курицей', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
         keyboard.add_button('Леденцы', color=VkKeyboardColor.POSITIVE)
@@ -134,10 +132,10 @@ def create_keyboard(response):
 
 
     elif response == 'салаты':
-        keyboard.add_button('Салат с креветками и кунжутом', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_button('Салат с креветками', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Английский салат', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
-        keyboard.add_button('Салат с курицей в азиатском стиле', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_button('Азиатский салат с курицей', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Салат с сыром и курицей', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
         keyboard.add_button('Салат Цезарь', color=VkKeyboardColor.POSITIVE)
@@ -145,21 +143,67 @@ def create_keyboard(response):
         keyboard.add_line()
         keyboard.add_button('Категории', color=VkKeyboardColor.NEGATIVE)
         keyboard.add_button('Функции', color=VkKeyboardColor.NEGATIVE)
-        keyboard.add_button('Еще салаты', color=VkKeyboardColor.NEGATIVE)
+        keyboard.add_button('Салаты(2/2)', color=VkKeyboardColor.NEGATIVE)
 
-    elif response == 'салат цезарь':
-        keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
+    elif response == 'салаты(2/2)':
+        keyboard.add_button('Коул Слоу', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_button('Греческий салат', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
-        keyboard.add_button('Добавить в избранное салат цезарь', color=VkKeyboardColor.PRIMARY)
+        keyboard.add_button('Салат Нисуаз', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_button('Вальдорфский салат', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_line()
+        keyboard.add_button('Категории', color=VkKeyboardColor.NEGATIVE)
+        keyboard.add_button('Функции', color=VkKeyboardColor.NEGATIVE)
+        keyboard.add_button('Салаты', color=VkKeyboardColor.NEGATIVE)
 
+    elif response == '':
+        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('', color=VkKeyboardColor.DEFAULT)
+
+    elif response == 'салат с креветками':
+        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
     elif response == 'английский салат':
-        keyboard.add_button('Добавить в избранное английский салат', color=VkKeyboardColor.PRIMARY)
+        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
         keyboard.add_line()
         keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
-    elif response == '':
+    elif response == 'азиатский салат с курицей':
+        keyboard.add_button('В избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
+    elif response == 'салат с сыром и курицей':
+        keyboard.add_button('В избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
+    elif response == 'салат цезарь':
         keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
         keyboard.add_line()
-        keyboard.add_button('', color=VkKeyboardColor.DEFAULT)
+        keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
+    elif response == 'кубинский салат':
+        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
+    elif response == 'коул слоу':
+        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
+    elif response == 'греческий салат':
+        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
+    elif response == 'салат нисуаз':
+        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
+    elif response == 'вальдорфский салат':
+        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Салаты', color=VkKeyboardColor.DEFAULT)
+
+
+
 
     elif response == 'пицца':
         keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
@@ -280,162 +324,6 @@ def create_keyboard(response):
         keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
         keyboard.add_line()
         keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-    elif response == 'джамбалайя':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-
-
-    elif response == '':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'пицца':
-        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Выпечка', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'хачапури по-аджарски':
-        keyboard.add_button('В избранное: '+ response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Выпечка', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'пироги печеные':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Выпечка', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'осетинский пирог':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Выпечка', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'самса с мясом':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Выпечка', color=VkKeyboardColor.DEFAULT)
-    elif response == 'маффины':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Выпечка', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'чебуреки':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Выпечка', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'пирог зебра':
-        keyboard.add_button('Добавить в избранное: '+response.title(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Выпечка', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'шарлотка':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Выпечка', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'пирог с капустой':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Выпечка', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'борщ':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Первые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'щи':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Первые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'куриный суп с вермишелью':
-        keyboard.add_button('В избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Первые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'солянка':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Первые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'шурпа':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Первые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'уха':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Первые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'суп с фрикадельками':
-        keyboard.add_button('В избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Первые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'рассольник':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Первые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'сырный суп':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Первые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'грибной суп':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Первые блюда', color=VkKeyboardColor.DEFAULT)
-
-
-    elif response == 'бефстроганов':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'голубцы':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'гуляш':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'лагман':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'плов':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'картофель тушёный':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'отбивная из курицы':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'запеканка мясная':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-
-    elif response == 'паста карбонара':
-        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
-        keyboard.add_line()
-        keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
-        
     elif response == 'джамбалайя':
         keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
         keyboard.add_line()
@@ -514,7 +402,6 @@ def create_keyboard(response):
         keyboard.add_line()
         keyboard.add_button('Пироги печеные', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Осетинский пирог', color=VkKeyboardColor.POSITIVE)
-
         keyboard.add_line()
         keyboard.add_button('Самса с мясом', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Маффины', color=VkKeyboardColor.POSITIVE)
@@ -530,22 +417,6 @@ def create_keyboard(response):
         keyboard.add_button('Шарлотка', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Пирог с капустой', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
-        keyboard.add_line()
-        keyboard.add_button('Самса с мясом', color=VkKeyboardColor.POSITIVE)
-        keyboard.add_button('Маффины', color=VkKeyboardColor.POSITIVE)
-        keyboard.add_line()
-        keyboard.add_button('Категории', color=VkKeyboardColor.NEGATIVE)
-        keyboard.add_button('Функции', color=VkKeyboardColor.NEGATIVE)
-        keyboard.add_button('Выпечка (2/2)', color=VkKeyboardColor.NEGATIVE)
-
-    elif response == 'выпечка (2/2)':
-        keyboard.add_button('Чебуреки', color=VkKeyboardColor.POSITIVE)
-        keyboard.add_button('Пирог Зебра', color=VkKeyboardColor.POSITIVE)
-        keyboard.add_line()
-        keyboard.add_button('Шарлотка', color=VkKeyboardColor.POSITIVE)
-        keyboard.add_button('Пирог с капустой', color=VkKeyboardColor.POSITIVE)
-        keyboard.add_line()
-
         keyboard.add_button('категории', color=VkKeyboardColor.NEGATIVE)
         keyboard.add_button('Функции', color=VkKeyboardColor.NEGATIVE)
         keyboard.add_button('Выпечка', color=VkKeyboardColor.NEGATIVE)
@@ -590,26 +461,19 @@ for event in longpoll.listen():
                         send_message(vk_session, 'user_id', event.user_id, message=i)
 
 
-            elif response == 'подобрать блюдо':
-                send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('Main_Recipes'))
-
-
-            elif response == 'добавить в избранное салат цезарь':
-                fav_list.append('Салат Цезарь')
-                send_message(vk_session, 'user_id', event.user_id, message='рецепт добавлен')
-
-            elif response == 'добавить в избранное английский салат':
-                fav_list.append('Английский салат')
-                send_message(vk_session, 'user_id', event.user_id, message='рецепт добавлен')
-
-
             elif response.find('добавить в избранное: ') != -1 or response.find("в избранное: ") != -1:
                 splitstring = response.split(': ')
                 fav_list.append(splitstring[1])
                 send_message(vk_session, 'user_id', event.user_id, message='рецепт добавлен')
 
+            elif response == "подобрать блюдо":
+                send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('Main_Recipes'))
             elif response == "500+ ккал":
                 send_message(vk_session, 'user_id', event.user_id, message='Выберите нужный пункт', keyboard=keyboard)
+            elif response == "200 - 400 ккал":
+                send_message(vk_session, 'user_id', event.user_id, message= 'Выберите нужный пункт ', keyboard=keyboard)
+            elif response == "далее 200 - 400 ккал":
+                send_message(vk_session, 'user_id', event.user_id, message= 'Выберите нужный пункт ', keyboard=keyboard)
             elif response == "далее 500+":
                 send_message(vk_session, 'user_id', event.user_id, message='Выберите нужный пункт', keyboard=keyboard)
             elif response == "далее 200 - 300 ккал":
@@ -634,18 +498,6 @@ for event in longpoll.listen():
             elif response == "печенье oreo":
               send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/cookie'),
                            attachment='photo-194978607_457239022')
-            elif response == "салат цезарь":
-              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_Cesar'),
-                           attachment='photo-194978607_457239028', keyboard=keyboard)
-            elif response == "кубинский салат":
-              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_cuba'),
-                           attachment='photo-194978607_457239030')
-            elif response == "салат с сыром и курицей":
-              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_with_cheese'),
-                           attachment='photo-194978607_457239027')
-            elif response == "салат с курицей в азиатском стиле":
-              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_with_checken'),
-                           attachment='photo-194978607_457239026')
             elif response == "капкейки":
               send_message(vk_session, 'user_id', event.user_id,message = openfile.open_in('recipes/cupcake'),
                            attachment='photo-194978607_457239023')
@@ -749,13 +601,42 @@ for event in longpoll.listen():
                 send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/pastry/pirogskapustoy.TXT'),
                              attachment='photo-194978607_457239040', keyboard=keyboard)
 
+
             elif response == "английский салат":
                 send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/eng_salad'),
                        attachment='photo-194978607_457239025', keyboard=keyboard)
-            elif response == "салат с креветками и кунжутом":
+            elif response == "салат с креветками":
               send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_with_krevetky'),
-                           attachment='photo-194978607_457239024')
+                           attachment='photo-194978607_457239024', keyboard=keyboard)
+            elif response == "салат цезарь":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_Cesar'),
+                           attachment='photo-194978607_457239028', keyboard=keyboard)
+            elif response == "кубинский салат":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_cuba'),
+                           attachment='photo-194978607_457239030',keyboard=keyboard)
+            elif response == "салат с сыром и курицей":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_with_cheese'),
+                           attachment='photo-194978607_457239027',keyboard=keyboard)
+            elif response == "азиатский салат с курицей":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_with_checken'),
+                           attachment='photo-194978607_457239026',keyboard=keyboard)
+            elif response == "коул слоу":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salads/coleslaw.TXT'),
+                           attachment='photo-194978607_457239065',keyboard=keyboard)
+            elif response == "вальдорфский салат":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salads/valdorfskiysalad.TXT'),
+                           attachment='photo-194978607_457239068',keyboard=keyboard)
+            elif response == "салат нисуаз":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salads/nisuaz.TXT'),
+                           attachment='photo-194978607_457239067',keyboard=keyboard)
+            elif response == "греческий салат":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salads/greeksalad.TXT'),
+                           attachment='photo-194978607_457239066',keyboard=keyboard)
+
+
             elif response == "салаты":
+                send_message(vk_session, 'user_id', event.user_id, message='Выберите салат',keyboard=keyboard)
+            elif response == "салаты(2/2)":
                 send_message(vk_session, 'user_id', event.user_id, message='Выберите салат',keyboard=keyboard)
             elif response == "пончики":
                 send_message(vk_session, 'user_id', event.user_id, message= openfile.open_in('recipes/Donat'),
@@ -799,7 +680,6 @@ for event in longpoll.listen():
                 if response == "мармелад":
                     send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/Marmelade'),
                                 attachment='photo-194978607_457239017')
-
                     # Выпечка (для рандома):
                 elif response == "пицца":
                     send_message(vk_session, 'user_id', event.user_id,
@@ -833,7 +713,6 @@ for event in longpoll.listen():
                     send_message(vk_session, 'user_id', event.user_id,
                                  message=openfile.open_in('recipes/pastry/pirogzebra.TXT'),
                                  attachment='photo-194978607_457239044')
-
                 elif response == "шарлотка":
                     send_message(vk_session, 'user_id', event.user_id,
                                  message=openfile.open_in('recipes/pastry/yablochniypirog.TXT'),
@@ -856,31 +735,49 @@ for event in longpoll.listen():
                 elif response == "печенье oreo":
                   send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/cookie'),
                                attachment='photo-194978607_457239022')
-
                 elif response == "капкейки":
                     send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/cupcake'),
                                  attachment='photo-194978607_457239023')
-                elif response == "салат с креветками и кунжутом":
-                    send_message(vk_session, 'user_id', event.user_id,
-                                 message=openfile.open_in('recipes/salad_with_krevetky'),
-                                 attachment='photo-194978607_457239024')
+
+
                 elif response == "английский салат":
                     send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/eng_salad'),
                                  attachment='photo-194978607_457239025')
-                elif response == "салат с курицей в азиатском стиле":
+                elif response == "салат с креветками":
                     send_message(vk_session, 'user_id', event.user_id,
-                                 message=openfile.open_in('recipes/salad_with_checken'),
-                                 attachment='photo-194978607_457239026')
-                elif response == "салат с сыром и курицей":
-                    send_message(vk_session, 'user_id', event.user_id,
-                                 message=openfile.open_in('recipes/salad_with_cheese'),
-                                 attachment='photo-194978607_457239027')
+                                 message=openfile.open_in('recipes/salad_with_krevetky'),
+                                 attachment='photo-194978607_457239024')
                 elif response == "салат цезарь":
                     send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/salad_Cesar'),
                                  attachment='photo-194978607_457239028')
                 elif response == "кубинский салат":
                     send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/salad_cuba'),
                                  attachment='photo-194978607_457239030')
+                elif response == "салат с сыром и курицей":
+                    send_message(vk_session, 'user_id', event.user_id,
+                                 message=openfile.open_in('recipes/salad_with_cheese'),
+                                 attachment='photo-194978607_457239027')
+                elif response == "азиатский салат с курицей":
+                    send_message(vk_session, 'user_id', event.user_id,
+                                 message=openfile.open_in('recipes/salad_with_checken'),
+                                 attachment='photo-194978607_457239026')
+                elif response == "коул слоу":
+                    send_message(vk_session, 'user_id', event.user_id,
+                                 message=openfile.open_in('recipes/salads/coleslaw.TXT'),
+                                 attachment='photo-194978607_457239065')
+                elif response == "вальдорфский салат":
+                    send_message(vk_session, 'user_id', event.user_id,
+                                 message=openfile.open_in('recipes/salads/valdorfskiysalad.TXT'),
+                                 attachment='photo-194978607_457239068')
+                elif response == "салат нисуаз":
+                    send_message(vk_session, 'user_id', event.user_id,
+                                 message=openfile.open_in('recipes/salads/nisuaz.TXT'),
+                                 attachment='photo-194978607_457239067')
+                elif response == "греческий салат":
+                    send_message(vk_session, 'user_id', event.user_id,
+                                 message=openfile.open_in('recipes/salads/greeksalad.TXT'),
+                                 attachment='photo-194978607_457239066')
+
 
                     # Первые блюда (для рандома):
                 elif response == "борщ":
@@ -899,12 +796,10 @@ for event in longpoll.listen():
                     send_message(vk_session, 'user_id', event.user_id,
                                  message=openfile.open_in('recipes\pfirst_food\Yuha.TXT'),
                                  attachment='photo-194978607_457239050')
-
                 elif response == "сырный суп":
                     send_message(vk_session, 'user_id', event.user_id,
                                  message=openfile.open_in('recipes\pfirst_food\Cheeze_soup.TXT'),
                                  attachment='photo-194978607_457239049')
-
                 elif response == "солянка":
                     send_message(vk_session, 'user_id', event.user_id,
                                  message=openfile.open_in('recipes\pfirst_food\Solyanka.TXT'),
@@ -967,15 +862,11 @@ for event in longpoll.listen():
                     send_message(vk_session, 'user_id', event.user_id,
                                  message=openfile.open_in('recipes\second_food\Jambalaya.TXT'),
                                  attachment='photo-194978607_457239062')
-
                 elif response == "шаурма с курицей":
                     send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/shaurma'),
                                  attachment='photo-194978607_457239033')
 
-            elif response == "Здоровое питание":
-                send_message(vk_session, 'user_id', event.user_id, message='Выберите категорию', keyboard=keyboard)
-            elif response == "Джанк фуд":
-                send_message(vk_session, 'user_id', event.user_id, message='Выберите категорию', keyboard=keyboard)
+
 
 
 
