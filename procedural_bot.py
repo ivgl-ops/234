@@ -160,6 +160,11 @@ def create_keyboard(response):
         keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
         keyboard.add_line()
         keyboard.add_button('', color=VkKeyboardColor.DEFAULT)
+    if response == 'избранное':
+        keyboard.add_button('Очистить список избранных рецептов', color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Функции', color=VkKeyboardColor.DEFAULT)
+
 
     elif response == 'салат с креветками':
         keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
@@ -452,19 +457,36 @@ for event in longpoll.listen():
             if response == "начать":
                 send_message(vk_session, 'user_id', event.user_id, message='Нажми на кнопку, чтобы получить список команд',keyboard=keyboard)
             elif response == "избранное":
-                if len(fav_list) == 0:
-                    send_message(vk_session, 'user_id', event.user_id, message='Вы пока что ничего не добавили')
+                checklist = []
+                for i in fav_list:
+                    if i[0] == event.user_id:
+                        checklist.append(i[1])
+                if len(checklist) == 0:
+                    send_message(vk_session, 'user_id', event.user_id, message='Список ваших избранных рецептов пуст')
                 else:
-                    send_message(vk_session, 'user_id', event.user_id, message= 'Избранные рецепты:')
+                    send_message(vk_session, 'user_id', event.user_id, message= 'Избранные рецепты:',keyboard=keyboard)
                     for i in fav_list:
-                        recipe = i
-                        send_message(vk_session, 'user_id', event.user_id, message=i)
+                        if i[0]==event.user_id:
+                            send_message(vk_session, 'user_id', event.user_id, message=i[1])
+            elif response == "очистить список избранных рецептов":
+                list_for_removing=[]
+                for i in fav_list:
+                    if i[0] == event.user_id:
+                        list_for_removing.append(i)
+                for i in list_for_removing:
+                    fav_list.remove(i)
+                send_message(vk_session, 'user_id', event.user_id, message="Список избранных рецептов очищен")
+
+
 
 
             elif response.find('добавить в избранное: ') != -1 or response.find("в избранное: ") != -1:
                 splitstring = response.split(': ')
-                fav_list.append(splitstring[1])
-                send_message(vk_session, 'user_id', event.user_id, message='рецепт добавлен')
+                if fav_list.count([event.user_id,splitstring[1]])>=1:
+                    send_message(vk_session, 'user_id', event.user_id, message='Этот рецепт уже содержится в вашем списке избранного')
+                else:
+                    fav_list.append([event.user_id, splitstring[1]])
+                    send_message(vk_session, 'user_id', event.user_id, message='рецепт добавлен')
 
             elif response == "подобрать блюдо":
                 send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('Main_Recipes'))
@@ -669,6 +691,7 @@ for event in longpoll.listen():
 
             elif response == 'закрыть':
                 send_message(vk_session, 'user_id', event.user_id, message='Закрыть',keyboard=keyboard)
+
                 #сделать тут карусель
             #elif response == "подборка самых вкусных рецептов":
                 #send_message(vk_session, 'user_id', event.user_id, message=corousel)
@@ -865,7 +888,8 @@ for event in longpoll.listen():
                 elif response == "шаурма с курицей":
                     send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/shaurma'),
                                  attachment='photo-194978607_457239033')
-
+            else:
+                send_message(vk_session, 'user_id', event.user_id, message='Такая команда не существует')
 
 
 
