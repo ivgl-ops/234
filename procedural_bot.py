@@ -33,7 +33,7 @@ def create_keyboard(response):
         keyboard.add_button('Рандомный рецепт', color=VkKeyboardColor.PRIMARY)
         keyboard.add_line()
         keyboard.add_button('Подобрать блюдо', color=VkKeyboardColor.PRIMARY)
-        keyboard.add_button('Поиск по каллориям', color=VkKeyboardColor.PRIMARY)
+        keyboard.add_button('Поиск по калориям', color=VkKeyboardColor.PRIMARY)
         keyboard.add_line()
         keyboard.add_button('Избранное', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Начать', color=VkKeyboardColor.NEGATIVE)
@@ -41,7 +41,7 @@ def create_keyboard(response):
     elif response == 'начать':
         keyboard.add_button('Функции', color=VkKeyboardColor.DEFAULT)
 
-    elif response == 'поиск по каллориям':
+    elif response == 'поиск по калориям':
         keyboard.add_button('500+ ккал', color=VkKeyboardColor.PRIMARY)
         keyboard.add_button('200 - 400 ккал', color=VkKeyboardColor.PRIMARY)
         keyboard.add_line()
@@ -59,15 +59,15 @@ def create_keyboard(response):
         keyboard.add_button('Отбивная из курицы', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Запеканка мясная', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
-        keyboard.add_button('поиск по каллориям', color=VkKeyboardColor.DEFAULT)
+        keyboard.add_button('поиск по калориям', color=VkKeyboardColor.DEFAULT)
         keyboard.add_button('далее 500+', color=VkKeyboardColor.PRIMARY)
 
     elif response == "далее 500+":
         keyboard.add_button('Шаурма с курицей', color=VkKeyboardColor.POSITIVE)
-        keyboard.add_button('Мини-слойки с курицей', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_button('Мини-слойки с сосисками', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
         keyboard.add_button('500+ ккал', color=VkKeyboardColor.PRIMARY)
-        keyboard.add_button('поиск по каллориям', color=VkKeyboardColor.DEFAULT)
+        keyboard.add_button('поиск по калориям', color=VkKeyboardColor.DEFAULT)
 
     elif response == '200 - 400 ккал':
         keyboard.add_button('Пицца', color=VkKeyboardColor.POSITIVE)
@@ -79,7 +79,7 @@ def create_keyboard(response):
         keyboard.add_button('Печенье Oreo', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Капкейки', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
-        keyboard.add_button('поиск по каллориям', color=VkKeyboardColor.DEFAULT)
+        keyboard.add_button('поиск по калориям', color=VkKeyboardColor.DEFAULT)
         keyboard.add_button('далее 200 - 400 ккал', color=VkKeyboardColor.PRIMARY)
 
     elif response == 'далее 200 - 400 ккал':
@@ -90,7 +90,7 @@ def create_keyboard(response):
         keyboard.add_button('Картофель тушёный', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
         keyboard.add_button('200 - 400 ккал', color=VkKeyboardColor.PRIMARY)
-        keyboard.add_button('поиск по каллориям', color=VkKeyboardColor.DEFAULT)
+        keyboard.add_button('поиск по калориям', color=VkKeyboardColor.DEFAULT)
 
     elif response == '100 - 200 ккал':
         keyboard.add_button('Салат с креветками', color=VkKeyboardColor.POSITIVE)
@@ -102,7 +102,7 @@ def create_keyboard(response):
         keyboard.add_button('Леденцы', color=VkKeyboardColor.POSITIVE)
         keyboard.add_button('Борщ', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
-        keyboard.add_button('поиск по каллориям', color=VkKeyboardColor.DEFAULT)
+        keyboard.add_button('поиск по калориям', color=VkKeyboardColor.DEFAULT)
         keyboard.add_button('Далее 100 - 200 ккал', color=VkKeyboardColor.PRIMARY)
 
     elif response ==  'далее 100 - 200 ккал':
@@ -116,7 +116,7 @@ def create_keyboard(response):
         keyboard.add_button('Рассольник', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
         keyboard.add_button('100 - 200 ккал', color=VkKeyboardColor.PRIMARY)
-        keyboard.add_button('поиск по каллориям', color=VkKeyboardColor.DEFAULT)
+        keyboard.add_button('поиск по калориям', color=VkKeyboardColor.DEFAULT)
 
     elif response == 'категории':
         keyboard.add_button('Выпечка', color=VkKeyboardColor.POSITIVE)
@@ -334,6 +334,56 @@ def create_keyboard(response):
         keyboard.add_line()
         keyboard.add_button('Вторые блюда', color=VkKeyboardColor.DEFAULT)
 
+    elif response == 'тарталетки':
+        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Закуски', color=VkKeyboardColor.DEFAULT)
+    elif response == 'шаурма с курицей':
+        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Закуски', color=VkKeyboardColor.DEFAULT)
+    elif response == 'мини-слойки с сосисками':
+        keyboard.add_button('В избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Закуски', color=VkKeyboardColor.DEFAULT)
+    elif response == 'гуакамоле':
+        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Закуски', color=VkKeyboardColor.DEFAULT)
+    elif response == 'жареные кабачки':
+        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Закуски', color=VkKeyboardColor.DEFAULT)
+    elif response == 'брускетта':
+        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Закуски', color=VkKeyboardColor.DEFAULT)
+
+    elif response == 'мармелад':
+        keyboard.add_button('Добавить в избранное: '+response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Сладости', color=VkKeyboardColor.DEFAULT)
+    elif response == 'пончики':
+        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Сладости', color=VkKeyboardColor.DEFAULT)
+    elif response == 'леденцы':
+        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Сладости', color=VkKeyboardColor.DEFAULT)
+    elif response == 'блины':
+        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Сладости', color=VkKeyboardColor.DEFAULT)
+    elif response == 'печенье oreo':
+        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Сладости', color=VkKeyboardColor.DEFAULT)
+    elif response == 'капкейки':
+        keyboard.add_button('Добавить в избранное: ' + response.capitalize(), color=VkKeyboardColor.PRIMARY)
+        keyboard.add_line()
+        keyboard.add_button('Сладости', color=VkKeyboardColor.DEFAULT)
+
 
 
     elif response == 'сладости':
@@ -348,7 +398,6 @@ def create_keyboard(response):
         keyboard.add_line()
         keyboard.add_button('категории', color=VkKeyboardColor.NEGATIVE)
         keyboard.add_button('Функции', color=VkKeyboardColor.NEGATIVE)
-        keyboard.add_button('Еще сладости', color=VkKeyboardColor.NEGATIVE)
 
     elif response == 'первые блюда':
         keyboard.add_button('Борщ', color=VkKeyboardColor.POSITIVE)
@@ -428,10 +477,16 @@ def create_keyboard(response):
 
     elif response == 'закуски':
         keyboard.add_button('Шаурма с курицей', color=VkKeyboardColor.POSITIVE)
-        keyboard.add_button('Мини-слойки с курицей', color=VkKeyboardColor.POSITIVE)
-
+        keyboard.add_button('Мини-слойки с сосисками', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_line()
+        keyboard.add_button('Гуакамоле', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_button('Жареные кабачки', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_line()
+        keyboard.add_button('Брускетта', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_button('Тарталетки', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
         keyboard.add_button('Функции', color=VkKeyboardColor.NEGATIVE)
+        keyboard.add_button('Категории', color=VkKeyboardColor.NEGATIVE)
 
     elif response == 'закрыть':
         print('закрываем клаву')
@@ -508,24 +563,9 @@ for event in longpoll.listen():
               send_message(vk_session, 'user_id', event.user_id, message='Выберите нужный пункт',keyboard=keyboard)
             elif response == "~300 ккал":
               send_message(vk_session, 'user_id', event.user_id, message='Выберите нужный пункт',keyboard=keyboard)
-            elif response == "поиск по каллориям":
+            elif response == "поиск по калориям":
               send_message(vk_session, 'user_id', event.user_id, message='Выберите нужный пункт',keyboard=keyboard)
-            elif response == "шаурма с курицей":
-              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/shaurma'),
-                           attachment='photo-194978607_457239033')
-              fav_list.append('шаурма с курицей')
-            elif response == "мини-слойки с курицей":
-                send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/mini_sloyki'),
-                             attachment='photo-194978607_457239034')
-            elif response == "печенье oreo":
-              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/cookie'),
-                           attachment='photo-194978607_457239022')
-            elif response == "капкейки":
-              send_message(vk_session, 'user_id', event.user_id,message = openfile.open_in('recipes/cupcake'),
-                           attachment='photo-194978607_457239023')
-            elif response == "блины":
-              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/pancake'),
-                           attachment='photo-194978607_457239021')
+
 
 
             elif response == "борщ":
@@ -632,7 +672,7 @@ for event in longpoll.listen():
                            attachment='photo-194978607_457239024', keyboard=keyboard)
             elif response == "салат цезарь":
               send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_Cesar'),
-                           attachment='photo-194978607_457239028', keyboard=keyboard)
+                           attachment='photo-194978607_457239089', keyboard=keyboard)
             elif response == "кубинский салат":
               send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salad_cuba'),
                            attachment='photo-194978607_457239030',keyboard=keyboard)
@@ -655,17 +695,50 @@ for event in longpoll.listen():
               send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/salads/greeksalad.TXT'),
                            attachment='photo-194978607_457239066',keyboard=keyboard)
 
+            elif response == "шаурма с курицей":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/shaurma'),
+                           attachment='photo-194978607_457239033',keyboard=keyboard)
+            elif response == "мини-слойки с сосисками":
+                send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/mini_sloyki'),
+                             attachment='photo-194978607_457239087',keyboard=keyboard)
+            elif response == "гуакамоле":
+                send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/snacks/guakamole.TXT'),
+                             attachment='photo-194978607_457239085',keyboard=keyboard)
+            elif response == "тарталетки":
+                send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/snacks/tartaletki.TXT'),
+                             attachment='photo-194978607_457239088',keyboard=keyboard)
+            elif response == "жареные кабачки":
+                send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/snacks/kabachki.TXT'),
+                             attachment='photo-194978607_457239086',keyboard=keyboard)
+            elif response == "брускетта":
+                send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/snacks/brusketta.TXT'),
+                             attachment='photo-194978607_457239084',keyboard=keyboard)
+
+
+            elif response == "пончики":
+                send_message(vk_session, 'user_id', event.user_id, message= openfile.open_in('recipes/Donat'),
+                             attachment='photo-194978607_457239019',keyboard=keyboard)
+            elif response == "леденцы":
+                send_message(vk_session, 'user_id', event.user_id, message= openfile.open_in('recipes/Chupa'),
+                             attachment='photo-194978607_457239020',keyboard=keyboard)
+            elif response == "мармелад":
+                send_message(vk_session, 'user_id', event.user_id, message= openfile.open_in('recipes/Marmelade'),
+                             attachment='photo-194978607_457239017',keyboard=keyboard)
+            elif response == "печенье oreo":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/cookie'),
+                           attachment='photo-194978607_457239022',keyboard=keyboard)
+            elif response == "капкейки":
+              send_message(vk_session, 'user_id', event.user_id,message = openfile.open_in('recipes/cupcake'),
+                           attachment='photo-194978607_457239023',keyboard=keyboard)
+            elif response == "блины":
+              send_message(vk_session, 'user_id', event.user_id, message = openfile.open_in('recipes/pancake'),
+                           attachment='photo-194978607_457239021',keyboard=keyboard)
+
 
             elif response == "салаты":
                 send_message(vk_session, 'user_id', event.user_id, message='Выберите салат',keyboard=keyboard)
             elif response == "салаты(2/2)":
                 send_message(vk_session, 'user_id', event.user_id, message='Выберите салат',keyboard=keyboard)
-            elif response == "пончики":
-                send_message(vk_session, 'user_id', event.user_id, message= openfile.open_in('recipes/Donat'),
-                             attachment='photo-194978607_457239019')
-            elif response == "леденцы":
-                send_message(vk_session, 'user_id', event.user_id, message= openfile.open_in('recipes/Chupa'),
-                             attachment='photo-194978607_457239020')
             elif response == "первые блюда(2/2)":
                 send_message(vk_session, 'user_id', event.user_id, message='Выберите первое блюдо', keyboard=keyboard)
             elif response == "вторые блюда(2/2)":
@@ -686,17 +759,13 @@ for event in longpoll.listen():
                 send_message(vk_session, 'user_id', event.user_id, message= 'Выберите блюдо',keyboard=keyboard)
             elif response == "выпечка (2/2)":
                 send_message(vk_session, 'user_id', event.user_id, message= 'Выберите блюдо',keyboard=keyboard)
-            elif response == "мармелад":
-                send_message(vk_session, 'user_id', event.user_id, message= openfile.open_in('recipes/Marmelade'), attachment='photo-194978607_457239017')
+
 
             elif response == 'закрыть':
                 send_message(vk_session, 'user_id', event.user_id, message='Закрыть',keyboard=keyboard)
 
-                #сделать тут карусель
-            #elif response == "подборка самых вкусных рецептов":
-                #send_message(vk_session, 'user_id', event.user_id, message=corousel)
-                #подумать над логикой рандома
 
+                #send_message(vk_session, 'user_id', event.user_id, message=corousel)
 
             elif response == "рандомный рецепт":
                 response = randomrecipe.random_recipe()
@@ -772,7 +841,7 @@ for event in longpoll.listen():
                                  attachment='photo-194978607_457239024')
                 elif response == "салат цезарь":
                     send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/salad_Cesar'),
-                                 attachment='photo-194978607_457239028')
+                                 attachment='photo-194978607_457239089')
                 elif response == "кубинский салат":
                     send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/salad_cuba'),
                                  attachment='photo-194978607_457239030')
@@ -885,9 +954,29 @@ for event in longpoll.listen():
                     send_message(vk_session, 'user_id', event.user_id,
                                  message=openfile.open_in('recipes\second_food\Jambalaya.TXT'),
                                  attachment='photo-194978607_457239062')
+
                 elif response == "шаурма с курицей":
                     send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/shaurma'),
                                  attachment='photo-194978607_457239033')
+                elif response == "гуакамоле":
+                    send_message(vk_session, 'user_id', event.user_id,
+                                 message=openfile.open_in('recipes/snacks/guakamole.TXT'),
+                                 attachment='photo-194978607_457239085')
+                elif response == "тарталетки":
+                    send_message(vk_session, 'user_id', event.user_id,
+                                 message=openfile.open_in('recipes/snacks/tartaletki.TXT'),
+                                 attachment='photo-194978607_457239088')
+                elif response == "жареные кабачки":
+                    send_message(vk_session, 'user_id', event.user_id,
+                                 message=openfile.open_in('recipes/snacks/kabachki.TXT'),
+                                 attachment='photo-194978607_457239086')
+                elif response == "брускетта":
+                    send_message(vk_session, 'user_id', event.user_id,
+                                 message=openfile.open_in('recipes/snacks/brusketta.TXT'),
+                                 attachment='photo-194978607_457239084')
+                elif response == "мини-слойки с сосисками":
+                    send_message(vk_session, 'user_id', event.user_id, message=openfile.open_in('recipes/mini_sloyki'),
+                                 attachment='photo-194978607_457239087')
             else:
                 send_message(vk_session, 'user_id', event.user_id, message='Такая команда не существует')
 
